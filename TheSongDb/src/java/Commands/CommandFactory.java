@@ -50,9 +50,9 @@ public class CommandFactory {
 //                case "allUsers":
 //                    command = new ViewAllUsersCommand();
 //                    break;
-//                case "changeLanguage":
-//                    command = new ChangeLanguageCommand();
-//                    break;
+                case "changeLanguage":
+                    command = new ChangeLanguageCommand();
+                    break;
 //                case "search":
 //                    command = new SearchCommand();
 //                    break;

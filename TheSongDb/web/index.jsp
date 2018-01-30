@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -7,7 +8,8 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Welcome</title>
+        <%@include file="internationalisationHeader.jsp" %>
+        <title><%=dataBundle.getString("welcome")%></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <%@include file="styles.jsp" %>
@@ -15,7 +17,5 @@ and open the template in the editor.
     
     <body>
         <%@include file="header.jsp" %>
-        
-        
     </body>
 </html>

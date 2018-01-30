@@ -25,6 +25,10 @@ public class UserDao extends Dao implements UserDaoInterface {
     public UserDao(String databaseName) {
         super(databaseName);
     }
+    
+    public UserDao(String databaseName, String poolName){
+        super(databaseName, poolName);
+    }
 
     /**
      * Register new user

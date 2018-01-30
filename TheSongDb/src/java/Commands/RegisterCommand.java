@@ -28,7 +28,7 @@ public class RegisterCommand implements Command {
         String password = request.getParameter("password");
         if (firstName != null && surName != null && email != null && password != null) {
 
-            UserDao userDao = new UserDao("TheSongDb");
+            UserDao userDao = new UserDao("TheSongDb", "jdbc/TheSongDb");
             int user = userDao.register(firstName, surName, email, password);
             if(user == 0){   
             forwardToJsp = "registerError.jsp";

@@ -37,7 +37,25 @@ public class Dao {
     public Dao(String name) {
         database = name;
     }
-    
+
+    public Dao(String name, String datasourceContext) {
+        this(name);
+        Connection con = null;
+
+        String DATASOURCE_CONTEXT = datasourceContext;
+        try {
+            Context initialContext = new InitialContext();
+            DataSource ds = (DataSource) initialContext.lookup("java:comp/env/" + DATASOURCE_CONTEXT);
+            if (ds != null) {
+                datasource = ds;
+                System.out.println("Connection pool located!");
+            } else {
+                System.out.println("Failed to lookup datasource.");
+            }
+        } catch (NamingException ex) {
+            System.out.println("Cannot get connection: " + ex);
+        }
+    }
 
     /**
      * Get the name of database we are currently accessing.
@@ -81,17 +99,17 @@ public class Dao {
         }
         return con;	// Send back the connection to the database.
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         Connection conn = null;
-        try{
-            if (datasource != null){
+        try {
+            if (datasource != null) {
                 conn = datasource.getConnection();
             } else {
                 System.out.println("failed to lookup datasource. Connecting to database directly.");
                 conn = this.getDirectConnection();
             }
-        }catch (SQLException ex2){
+        } catch (SQLException ex2) {
             System.out.println("Connection failed " + ex2.getMessage());
             System.exit(2);
         }

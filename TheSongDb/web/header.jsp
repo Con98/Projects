@@ -32,6 +32,13 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="register.jsp"><span class="glyphicon glyphicon-user"></span> <%=dataBundle.getString("register")%></a></li>
       <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> <%=dataBundle.getString("login")%></a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-asterisk"></span> Settings <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a href="#"><%=dataBundle.getString("page")%> 1-1</a></li>
+          <li><a href="#"><%=dataBundle.getString("page")%> 1-2</a></li>
+          <li><a href="#"><%=dataBundle.getString("page")%> 1-3</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>

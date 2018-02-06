@@ -34,6 +34,7 @@
                 //Create a resource bundle based on the client's current locale settings
                 dataBundle = ResourceBundle.getBundle("properties.TheSongDb", cLocale);
 
+                
                 //Store this resource bundle for future use
                 session.setAttribute("dataBundle", dataBundle);
             }

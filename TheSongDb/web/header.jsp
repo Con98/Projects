@@ -91,15 +91,14 @@
                     %>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><%=dataBundle.getString("home")%></a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=dataBundle.getString("page")%> 1 <span class="caret"></span></a>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Friends<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><%=dataBundle.getString("page")%> 1-1</a></li>
-                        <li><a href="#"><%=dataBundle.getString("page")%> 1-2</a></li>
-                        <li><a href="#"><%=dataBundle.getString("page")%> 1-3</a></li>
+                        <li><a href="#">Friend 1</a></li>
+                        <li><a href="#">Friend 2</a></li>
+                        <li><a href="#">Friend 3</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><%=dataBundle.getString("page")%> 2</a></li>
+                <li><a href="#">Music</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%

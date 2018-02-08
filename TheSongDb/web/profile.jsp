@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%-- 
     Document   : profile
     Created on : 01-Feb-2018, 11:21:18
@@ -13,19 +14,19 @@
     try{
         if (session.getAttribute("login") == null){
 %>
-<%@include file = "navForGuest.jsp"%>
+
 <%
     }
 if(session.getAttribute("login") != null){
-UserDao checkuser = new UserDao();
+UserDao checkuser = new UserDao("TheSongDb", "jdbc/TheSongDb");
 User loggedUser = (User) session.getAttribute("login");
-String userN = loggedUser.getEmail();
+boolean userN = loggedUser.isType();
 
-if(checkuser.getUserType(userN) == 1){
+if(loggedUser.isType() == userN){
 %>
-<%@include file = "navForAdmin.jsp" %>
+
 <% }else {%>
-<%@include file = "nav.jsp" %>
+<!--Regular Nav-->
 <%
     }
         }

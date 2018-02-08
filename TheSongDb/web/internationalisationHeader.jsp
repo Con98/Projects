@@ -6,6 +6,7 @@
 
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.ResourceBundle"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -21,6 +22,7 @@
         session.setAttribute("currentLocale", cLocale);
     }
 %>
+
 <!-- create a form to change the language based on changing the drop down selection -->
 <form action="FrontController" method="post">
     <!-- When the value of the drop down changes, 
@@ -44,6 +46,7 @@
             if(language == null || language.equals("en")){
                 
         %>
+        
             <option value="en" selected><%=dataBundle.getString("option_en")%></option>
             <option value="lt"><%=dataBundle.getString("option_lt")%></option>
         <%

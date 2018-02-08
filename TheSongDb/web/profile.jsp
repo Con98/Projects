@@ -5,11 +5,16 @@
     Author     : emmet
 --%>
 
-<%@page import = "Dtos.User" %>
+
+<head>
+    <%@page import = "Dtos.User" %>
 <%@page import = "Daos.UserDao" %>
 <%@ include file="header.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<title>Profile</title>
+</head>
 
+<body>
 
 <%    try {
         if (session.getAttribute("login") == null) {

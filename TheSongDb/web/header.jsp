@@ -17,7 +17,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <title>Header</title>
     </head>
     <%
         // Retrieve the appropriate Locale - check if it's already been set within the site
@@ -71,7 +70,25 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">TheSongDb</a>
+                <%
+                    Object logName = session.getAttribute("login");
+                    if (logName != null) {
+                        User user = (User) logName;
+                        session.setAttribute("userId", user.getUserId());
+                        int userId = user.getUserId();
+                %>
+
+                <a class="navbar-brand" href="home.jsp">TheSongDb</a>
+
+                <%
+                } else {
+
+
+                %>
+                <a class="navbar-brand" href="index.jsp">TheSongDb</a>
+                <%
+                    }
+                    %>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#"><%=dataBundle.getString("home")%></a></li>
@@ -86,14 +103,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
-                    Object logName = session.getAttribute("login");
+                    
                     if (logName != null) {
                         User user = (User) logName;
                         session.setAttribute("userId", user.getUserId());
                         int userId = user.getUserId();
                 %>
 
-                <li><a href="profile.jsp"><span class="glyphicon glyphicon-user"></span> Hello Thomas</a></li>
+                <li><a href="profile.jsp"><span class="glyphicon glyphicon-user"></span> Hello <%= user.getFirstName()%></a></li>
 
                 <%
                 } else {
@@ -107,9 +124,24 @@
                     %>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-asterisk"></span> Settings <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><%=dataBundle.getString("page")%> 1-1</a></li>
+                        <%
+                    
+                    if (logName != null) {
+                        User user = (User) logName;
+                        session.setAttribute("userId", user.getUserId());
+                        int userId = user.getUserId();
+                %>
+
+                <li><a href="FrontController?action=logout">Logout</a></li>
+
+                <%
+                } else{
+                %>
                         <li><a href="#"><%=dataBundle.getString("page")%> 1-2</a></li>
                         <li><a href="#"><%=dataBundle.getString("page")%> 1-3</a></li>
+                        <% 
+}
+                            %>
                     </ul>
                 </li>
             </ul>

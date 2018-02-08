@@ -11,25 +11,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<%
-    try{
-        if (session.getAttribute("login") == null){
+<%    try {
+        if (session.getAttribute("login") == null) {
 %>
 
 <%
     }
-if(session.getAttribute("login") != null){
-UserDao checkuser = new UserDao("TheSongDb", "jdbc/TheSongDb");
-User loggedUser = (User) session.getAttribute("login");
-boolean userN = loggedUser.isType();
+    if (session.getAttribute("login") != null) {
+        UserDao checkuser = new UserDao("TheSongDb", "jdbc/TheSongDb");
+        User loggedUser = (User) session.getAttribute("login");
+        boolean userN = loggedUser.isType();
 
-if(loggedUser.isType() == userN){
+        if (loggedUser.isType() == userN) {
 %>
 
-<% }else {%>
+<% } else {%>
 <!--Regular Nav-->
 <%
-    }
+            }
         }
     } catch (Exception ex) {
         out.println(ex.getMessage());
@@ -39,38 +38,34 @@ if(loggedUser.isType() == userN){
 <h1>Welcome To Your Profile</h1>
 <%
     User loggedUser = (User) session.getAttribute("login");
-    
-String fName = loggedUser.getFirstName();
-String lName = loggedUser.getSurName();
-String email = loggedUser.getEmail();
-
-String message1 = "";
-String message2 = "";
-String message3 = "";
-
-if (loggedUser != null){
-    message1 = fName;
-    message2 = lName;
-    message3 = email;
-}
 %>
+
+<%
+    if (loggedUser != null) {
+        
+%>
+<h1>Welcome <%=loggedUser.getUserName()%></h1>
+
 <br/>
 <h2>Personal Info</h2>
 <table>
     <tr>
-        <th>Firstname: </th>
-        <td><%=message1%></td>
+        <th>First Name: </th>
+        <td><%=loggedUser.getFirstName()%></td>
     </tr>
-    
+
     <tr>
         <th>Surname: </th>
-        <td><%=message3%></td>
+        <td><%=loggedUser.getSurName()%></td>
     </tr>
-    
+
     <tr>
         <th>Email Address: </th>
-        <td><%=message3%></td>
+        <td><%=loggedUser.getEmail()%></td>
     </tr>
 </table>
+    <%
+        }
+    %>
 </body>
 </html>

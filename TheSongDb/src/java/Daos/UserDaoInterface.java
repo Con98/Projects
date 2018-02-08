@@ -87,4 +87,5 @@ public interface UserDaoInterface {
 //    public ArrayList<User> viewAllUsers();
 //    
 //    public boolean editUser(int userId, String firstName, String surName, String email, String password);
+    public User getDetailsById(int id);
 }

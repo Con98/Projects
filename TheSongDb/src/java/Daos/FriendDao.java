@@ -35,9 +35,9 @@ public class FriendDao extends Dao implements FriendDaoInterface {
 
         try {
             conn = this.getConnection();
-
+            
             UserDao userDao = new UserDao("Me");
-            User user = userDao.findUserByUserId(userId);
+            User user = userDao.getDetailsById(userId);
 
             String query = "SELECT * FROM friend WHERE userId1 = ? OR userId2 = ?";
             ps = conn.prepareStatement(query);
@@ -50,10 +50,11 @@ public class FriendDao extends Dao implements FriendDaoInterface {
                 if (friend == userId) {
                     friend = rs.getInt("friend2");
                 }
-
-                User userFriend = userDao.findUserById(friend);
-                Friend f = new Friend(id, user, userFriend);
-                friends.add(f);
+                
+                User userFriend = userDao.getDetailsById(friend);
+               // Friend f = new Friend(id, user, userFriend);
+               // friends.add(f);
+               
 
             }
         } catch (SQLException ex) {

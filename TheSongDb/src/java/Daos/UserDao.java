@@ -168,7 +168,66 @@ public class UserDao extends Dao implements UserDaoInterface {
         }
         return u;
     }
+    
+    public User getDetailsById(int userId) {
+        User u = new User();
+        boolean found = false;
 
+        Connection conn = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = conn.prepareStatement("SELECT * FROM users WHERE userId = ?");
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                u.setUserId(rs.getInt("userId"));
+                u.setFirstName(rs.getString("firstName"));
+                u.setSurName(rs.getString("surName"));
+                u.setUserName(rs.getString("userName"));
+                u.setEmail(rs.getString("email"));
+                if (rs.getInt("type") == 0) {
+                    u.setType(false);
+                } else if (rs.getInt("type") == 1) {
+                    u.setType(true);
+                }
+                u.setPassword(rs.getString("password"));
+
+                found = true;
+            }
+        } catch (SQLException se) {
+            System.out.println("SQL Exception occurred: " + se.getMessage());
+
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println("Exception occurred when attempting to close ResultSet: " + ex.getMessage());
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("Exception occurred when attempting to close the PreparedStatement: " + ex.getMessage());
+                }
+            }
+            freeConnection(conn);
+        }
+        if (!found) {
+            return null;
+        } else {
+            return u;
+        }
+    }
+    
     public static String passwordGenerator(String password) {
 
         String hashPassword = null;

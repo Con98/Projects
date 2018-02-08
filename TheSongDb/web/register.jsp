@@ -31,6 +31,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-sm-2" for="userName">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="userName" placeholder="Enter Username" required>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" name="email" placeholder="Enter email" required>

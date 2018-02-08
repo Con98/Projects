@@ -42,7 +42,7 @@ public class UserDao extends Dao implements UserDaoInterface {
      * -1 = user already registered
      */
     @Override
-    public int register(String firstName, String surName,  String email, String password) {
+    public int register(String firstName, String surName, String userName,  String email, String password) {
 
         /**
          * Number indicating how many users are inserted into database.
@@ -61,14 +61,15 @@ public class UserDao extends Dao implements UserDaoInterface {
             conn = getConnection();
 
             // Get a statement from the connection
-            ps = conn.prepareStatement("INSERT INTO users (firstName,surName,email,password) VALUES( ?, ?, ?, ?)");
+            ps = conn.prepareStatement("INSERT INTO users (firstName,surName, userName, email,password) VALUES(?, ?, ?, ?, ?)");
 
             // Fill in the blanks - they are starting from 1.
             ps.setString(1, firstName);
             ps.setString(2, surName);
-            ps.setString(3, email);
+            ps.setString(3, userName);
+            ps.setString(4, email);
             //hash the password
-            ps.setString(4, passwordGenerator(password));
+            ps.setString(5, passwordGenerator(password));
 
             // Execute the query and store how many rows were affected/changed
             // when inserting, this number indicates whether or not the row was

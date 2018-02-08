@@ -24,19 +24,20 @@ public class RegisterCommand implements Command {
 
         String firstName = request.getParameter("firstName");
         String surName = request.getParameter("surName");
+        String userName = request.getParameter("userName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (firstName != null && surName != null && email != null && password != null) {
 
             UserDao userDao = new UserDao("TheSongDb", "jdbc/TheSongDb");
-            int user = userDao.register(firstName, surName, email, password);
+            int user = userDao.register(firstName, surName, userName, email, password);
             if(user == 0){   
             forwardToJsp = "registerError.jsp";
             }
             else if(user > 0){
                 HttpSession session = request.getSession();
             session.setAttribute("register", user);
-                forwardToJsp = "registerSuccess.jsp";
+                forwardToJsp = "login.jsp";
             }
             else if(user == -1){
                 forwardToJsp = "registerFailed.jsp";

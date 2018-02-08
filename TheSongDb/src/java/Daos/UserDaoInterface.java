@@ -1,5 +1,5 @@
 /*
- * David Brennan, Juraj Chudik, Thomas Conroy
+ * Thomas, Tadas, Emmet
  */
 package Daos;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Juraj Chudik
+ * @author Thomas
  */
 public interface UserDaoInterface {
 
@@ -47,7 +47,7 @@ public interface UserDaoInterface {
      * @return number of rows affected - 0 = unsuccessful, 1 = new user created,
      * -1 = user already registered
      */
-    public int register(String firstName, String surName, String email, String password);
+    public int register(String firstName, String surName, String userName, String email, String password);
 
     /**
      *

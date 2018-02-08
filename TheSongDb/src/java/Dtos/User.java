@@ -1,5 +1,5 @@
 /*
- * David Brennan, Juraj Chudik, Thomas Conroy
+ * Thomas, Tadas, Emmet
  */
 package Dtos;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Juraj Chudik
+ * @author Thomas
  */
 public class User {
 
@@ -18,6 +18,7 @@ public class User {
     private int userId;
     private String firstName;
     private String surName;
+    private String userName;
     /**
      * String email is also used as a username when login.
      */
@@ -47,9 +48,10 @@ public class User {
      * @param type type of user (false = user, true = administrator)
      * @param password password for access to library stored as a hash using MD5
      */
-    public User(String firstName, String surName, String email, boolean type, String password) {
+    public User(String firstName, String surName,String userName, String email, boolean type, String password) {
         this.firstName = firstName;
         this.surName = surName;
+        this.userName = userName;
         this.email = email;
         this.type = type;
         this.password = password;
@@ -109,6 +111,14 @@ public class User {
         this.surName = surName;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
     /**
      * getter for email
      *

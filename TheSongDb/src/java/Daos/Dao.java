@@ -1,5 +1,5 @@
 /*
- * David Brennan, Juraj Chudik, Thomas Conroy
+ * Thomas, Tadas, Emmet
  */
 package Daos;
 
@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 
 /**
  *
- * @author Juraj Chudik
+ * @author Tadas
  */
 public class Dao {
 

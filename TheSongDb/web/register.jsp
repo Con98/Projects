@@ -10,7 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign Up</title>
-        <%@include file="styles.jsp" %>
+        
+        <%@include file="header.jsp" %>
         
     </head>
     <body>
@@ -20,25 +21,25 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="firstName">First Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="firstName" placeholder="Enter First Name">
+                    <input type="text" class="form-control" name="firstName" placeholder="Enter First Name" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="surName">Surname:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="surName" placeholder="Enter Surname">
+                    <input type="text" class="form-control" name="surName" placeholder="Enter Surname" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" name="email" placeholder="Enter email">
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="password">Password:</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" name="password" placeholder="Enter password">
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" required>
                 </div>
             </div>
             <div class="col-sm-offset-2 col-sm-10">

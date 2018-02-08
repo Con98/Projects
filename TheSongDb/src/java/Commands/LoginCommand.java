@@ -5,7 +5,6 @@
  */
 package Commands;
 
-import java.util.ArrayList;
 import Daos.UserDao;
 import Dtos.User;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +33,7 @@ public class LoginCommand implements Command {
             else if(user.isType() == false){
                 HttpSession session = request.getSession();
             session.setAttribute("login", user);
-                forwardToJsp = "loginSuccess.jsp";
+                forwardToJsp = "home.jsp";
             }
             else if(user.isType() == true){
                 HttpSession session = request.getSession();

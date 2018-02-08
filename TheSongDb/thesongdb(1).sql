@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2018 at 11:20 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Feb 08, 2018 at 01:59 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-Drop TABLE if EXISTS `friend`;
-Drop TABLE if EXISTS `users`;
-Drop TABLE if EXISTS `message`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -78,19 +72,25 @@ CREATE TABLE `users` (
 -- Indexes for table `friend`
 --
 ALTER TABLE `friend`
-  ADD PRIMARY KEY (`friendId`);
+  ADD PRIMARY KEY (`friendId`),
+  ADD KEY `userId1` (`userId1`),
+  ADD KEY `userId2` (`userId2`);
 
 --
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`messageId`);
+  ADD PRIMARY KEY (`messageId`),
+  ADD KEY `fromId` (`fromId`),
+  ADD KEY `toId` (`toId`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserId`);
+  ADD PRIMARY KEY (`UserId`),
+  ADD UNIQUE KEY `userName` (`userName`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -101,19 +101,33 @@ ALTER TABLE `users`
 --
 ALTER TABLE `friend`
   MODIFY `friendId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
   MODIFY `messageId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `UserId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-COMMIT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `friend`
+--
+ALTER TABLE `friend`
+  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userId1`) REFERENCES `users` (`UserId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`userId2`) REFERENCES `users` (`UserId`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`fromId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`toId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

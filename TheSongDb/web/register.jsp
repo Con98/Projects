@@ -11,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign Up</title>
         
-        <%@include file="internationalisationHeader.jsp" %>
         <%@include file="header.jsp" %>
         
     </head>

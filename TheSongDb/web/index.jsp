@@ -8,11 +8,11 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <%@include file="internationalisationHeader.jsp" %>
+        <%@ include file="header.jsp"%>
         <title><%=dataBundle.getString("welcome")%></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <%@ include file="header.jsp"%>
+        
     </head>
     
     <body>
